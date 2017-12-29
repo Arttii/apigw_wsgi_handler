@@ -18,15 +18,11 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-import operator
-import sys
-import types
-import unittest
 
-import py
+import pytest
 
 import apigw_wsgi_handler
 
 
-def dummy_test():
+def test_dummy():
     assert 1 == 1
