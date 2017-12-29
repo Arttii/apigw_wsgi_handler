@@ -4,28 +4,29 @@ sudo: false
 language: python
 python:
 - 2.7
-- &mainstream_python 3.6
+- 3.6
 - 3.6-dev
 - 3.7-dev
 - pypy2.7-5.8.0
 - pypy3.5-5.8.0
 install:
-- pip install --upgrade --force-reinstall "setuptools; python_version != '3.2'" "setuptools < 30; python_version == '3.2'"
+- pip install --upgrade --force-reinstall "setuptools; python_version != '3.2'" "setuptools
+  < 30; python_version == '3.2'"
 - pip uninstall --yes apigw-wsgi-handler || true
 - pip install --upgrade --force-reinstall --ignore-installed -e .
 - pip install pytest
-- &py_pkg_list pip list --format=columns || pip list
+- pip list --format=columns || pip list
 script:
 - py.test
 - echo Checking whether installation flow is not broken...
 - pip uninstall --yes apigw_wsgi_handler || true
 - pip install --ignore-installed .
-- *py_pkg_list
+- pip list --format=columns || pip list
 jobs:
   fast_finish: true
   include:
   - stage: upload new version of python package to PYPI (only for tagged commits)
-    python: *mainstream_python
+    python: 3.6
     install: skip
     script: skip
     deploy:
@@ -33,13 +34,13 @@ jobs:
       on:
         tags: true
         all_branches: true
-        python: *mainstream_python
+        python: 3.6
       user: arttii
-      distributions: "sdist bdist_wheel"
+      distributions: sdist bdist_wheel
       password:
-        secure: XG3Aa1OD989yHI6XyAkjPsX472JIrpRvYSYZ7tUnVeVE0Db2t0Fpi7hwcPISkEmWvp+XgjBnxdMn+nBvM90bVGvIA7ufJF3owMBPs5H7+/LdjcjGwxrJHqyVPMgH6pd6vJv43E09zqYroihD1BfMD+FQp9j31UNBj7ewrBRRWpgIlXlb8T1diG/CUZqSYFZ8bGJTY1goC/X6IBjvuHsX/tgeeMiko8/WlEcKu0XeBo7uEWByC/rTMqQcZqghc942wnEzUdc9HnNmjOq5QGc2/82o8pUq/xpHA3eXs3/sfFXe4PuorrrL3nBgQeAnUVPbyV7uG2fb2XEPPz0x3T3smP1whReVjPC413uvGryNmP0CPNdlAZXhrTcfc3VYz1hLfC4aCqCdsOCylw9RPYfDdaQDRVc5Wb20+jlvnC1+oXwmv/jcpQ10KDGOgB0iicYM9d3GubZbE+Lxcw9PjuQxD5+0lwHCz4mdI/tjLgngvsgyrwI72Ngq4bFkxkVA3vuMpYJstsclIs7k+xtPc/5GimMpnTTdMyelSqTabb7GF6kOQCLeGIEdDkU9N6vTpnA9ZFt7e/n6Xu5bbvwtLD2WH56PzdF/l8MXj/63Cpi0cS6yNfYrI/1X6LQkLQ+iB7EHh/WSyyXKxMUGkC0sxT8OCly0ZMpgex0sLcj/1eaVf8E=
+        secure: XpeUdbzZu3UWNnVyfTaEDYUgMQu5w8IYf8sKy+N96M7AmkAsTkk/E2TyHHYvabZUS20Upj7q5Ub+yRv1ayiaR8ZDsCYsxcStRcecVMsMcRSqzZvOu08KjfcOLEuEs7TA0VrAcSogGBeAQ5AjgzVXjT0pGwTUfMzg4P+NbnGupedKsHagEkKzGIzgwOUFoIi1igXaZTYL/2uY9JJf52brmEaG0s9L+iSrTVmy1nsFlOAfN3ZI93jdyA3BbIlD66VxSLPoVcY9FDPadyVa6qRr/z/+A3DYymXm7LcRxgtHR/pNm4QG41H8dJxoEQhnWBYP4x5NtGGKvklwwrxIsgkyyYSEUoXmb97YvDapwDQpo0JALN+xrnSoT33w3Clk9vlwxIRmDz0/ucxEbQs+Spno5Qoi7kvu+n7POpfKqEug1sFZOqeNT8Fw9VXb1iLMQDt/2hIBebqR9SqavHS8piU9xtwCOt1ed+mHqJBAVPqZMnRwsPqgi+xkG30afjF7VM+/kmREFnjpG5db1HYPAb5EBBhZcSeC29pkff8lHrq2LRahEMAkz3YZi7bvFGX6FzVGzBE42UuM7PM3YH/sD6slvodEf5ied+ZNhQYDU4oD3+CZOuq+ylQP2wswAP3NRsElihGIlXzPiUtxYl3g+mAQK+HgEPbxsCNPmC+WrwEAGw0=
 cache:
   pip: true
 after_failure:
 - echo "Here's a list of installed Python packages:"
-- *py_pkg_list
+- pip list --format=columns || pip list
