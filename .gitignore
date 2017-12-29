@@ -1,0 +1,7 @@
+*.pyc
+build
+dist
+MANIFEST
+documentation/_build
+.tox
+apigw_wsgi_handler.egg-info
