@@ -22,7 +22,8 @@ from __future__ import with_statement
 
 from setuptools import setup
 
-import apigw_wsgi_handler
+__author__ = "Artyom Topchyan <artyom.topchyan@live.com>"
+__version__ = "1.0.0"
 
 apigw_wsgi_handler_classifiers = [
     "Programming Language :: Python :: 2",
@@ -36,11 +37,11 @@ apigw_wsgi_handler_classifiers = [
 with open("README.rst", "r") as fp:
     apigw_wsgi_handler_long_description = fp.read()
 
-setup(name="apigw_wsgi_handler",
-      version=apigw_wsgi_handler.__version__,
+setup(name="apigw-wsgi-handler",
+      version=__version__,
       author="Artyom Topchyan",
       author_email="artyom.topchyan@live.com",
-      url="http://pypi.python.org/pypi/apigw_wsgi_handler/",
+      url="http://pypi.python.org/pypi/apigw-wsgi-handler/",
       tests_require=["pytest"],
       install_requires=['Werkzeug>=0.9'],
       py_modules=["apigw_wsgi_handler"],

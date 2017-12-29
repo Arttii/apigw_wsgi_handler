@@ -11,7 +11,7 @@ python:
 - pypy3.5-5.8.0
 install:
 - pip install --upgrade --force-reinstall "setuptools; python_version != '3.2'" "setuptools < 30; python_version == '3.2'"
-- pip uninstall --yes apigw_wsgi_handler || true
+- pip uninstall --yes apigw-wsgi-handler || true
 - pip install --upgrade --force-reinstall --ignore-installed -e .
 - pip install pytest
 - &py_pkg_list pip list --format=columns || pip list

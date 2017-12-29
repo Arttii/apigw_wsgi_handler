@@ -11,8 +11,7 @@ Authors: Logan Raarup <logan@logan.dk>, Artyom Topchyan <artyom.topchyan@live.co
 """
 from __future__ import absolute_import
 
-__author__ = "Artyom Topchyan <artyom.topchyan@live.com>"
-__version__ = "1.0.0"
+
 
 
 import base64
