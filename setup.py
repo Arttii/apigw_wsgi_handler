@@ -1,4 +1,4 @@
-# Copyright (c) 2010-2017 Benjamin Peterson
+# Copyright (c) 2010-2017 Artyom Topchyan
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -20,13 +20,7 @@
 
 from __future__ import with_statement
 
-# apigw_wsgi_handler is a dependency of setuptools, so using setuptools creates a
-# circular dependency when building a Python stack from source. We
-# therefore allow falling back to distutils to install apigw_wsgi_handler.
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
 import apigw_wsgi_handler
 
@@ -48,7 +42,7 @@ setup(name="apigw_wsgi_handler",
       author_email="artyom.topchyan@live.com",
       url="http://pypi.python.org/pypi/apigw_wsgi_handler/",
       tests_require=["pytest"],
-      install_requires=['werkzeug'],
+      install_requires=['Werkzeug>=0.9'],
       py_modules=["apigw_wsgi_handler"],
       description="Python 2 and 3 compatibility utilities",
       long_description=apigw_wsgi_handler_long_description,
