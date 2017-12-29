@@ -29,4 +29,4 @@ import apigw_wsgi_handler
 
 
 def dummy_test():
-    assert 1==1
+    assert 1 == 1

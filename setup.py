@@ -48,6 +48,7 @@ setup(name="apigw_wsgi_handler",
       author_email="artyom.topchyan@live.com",
       url="http://pypi.python.org/pypi/apigw_wsgi_handler/",
       tests_require=["pytest"],
+      install_requires=['werkzeug']
       py_modules=["apigw_wsgi_handler"],
       description="Python 2 and 3 compatibility utilities",
       long_description=apigw_wsgi_handler_long_description,
